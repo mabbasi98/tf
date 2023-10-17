@@ -30,7 +30,7 @@ resource "azurerm_monitor_metric_alert" "alert_aks-node-cpu-percentage" {
     threshold        = "80"
 
     dynamic "dimension" {
-      for_each = [local.nodes[criteria.key]]
+      for_each = local.nodes
       content {
         name     = "Name of Node"
         operator = "Include"
@@ -62,7 +62,7 @@ resource "azurerm_monitor_metric_alert" "node-memory-percentage" {
     threshold        = "80"
 
     dynamic "dimension" {
-      for_each = [local.nodes[criteria.key]]
+      for_each = local.nodes
       content {
         name     = "Name of Node"
         operator = "Include"
@@ -91,7 +91,7 @@ resource "azurerm_monitor_metric_alert" "node-disk-percentage" {
     threshold        = "80"
 
     dynamic "dimension" {
-      for_each = [local.nodes[criteria.key]]
+      for_each = local.nodes
       content {
         name     = "Name of Node"
         operator = "Include"
